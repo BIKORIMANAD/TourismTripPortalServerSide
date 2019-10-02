@@ -9,12 +9,12 @@ $descr      = $_POST['species'];
 $url        = $_POST['breed'];
 $status     = $_POST['gender'];
 $visit_date = $_POST['birth'];
-$picture    = $_POST['picture'];
+// $picture    = $_POST['picture'];
 
 if ( $key == "insert" ){
 
-    $birth_newformat = date('Y-m-d', strtotime($visit_date));
-
+    // $birth_newformat = date('Y-m-d', strtotime($visit_date));
+    $birth_newformat = date('Y-m-d');
     $query = "INSERT INTO touristic_site (site_name,site_descr,site_location,site_type,created_at)
     VALUES ('$name', '$descr', '$url', '$status', '$birth_newformat') ";
 

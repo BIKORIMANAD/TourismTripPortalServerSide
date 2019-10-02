@@ -36,9 +36,9 @@ class DbOperation
 	* When this method is called it is returning all the existing record of the database
 	*/
 	function getHeroes(){
-		$stmt = $this->con->prepare("SELECT id, name, phoneNumber, Email, message FROM suggestions");
+		$stmt = $this->con->prepare("SELECT id, name, phoneNumber, Email, message,created_at FROM suggestions ORDER BY created_at DESC");
 		$stmt->execute();
-		$stmt->bind_result($id, $name, $realname, $rating, $teamaffiliation);
+		$stmt->bind_result($id, $name, $realname, $rating, $teamaffiliation,$created_at);
 		
 		$heroes = array(); 
 		
@@ -48,7 +48,8 @@ class DbOperation
 			$hero['name'] = $name; 
 			$hero['phoneNumber'] = $realname; 
 			$hero['Email'] = $rating; 
-			$hero['message'] = $teamaffiliation; 
+			$hero['message'] = $teamaffiliation;
+			$hero['created_at'] = $created_at;
 			
 			array_push($heroes, $hero); 
 		}

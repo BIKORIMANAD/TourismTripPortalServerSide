@@ -3,7 +3,7 @@ require_once("connect.php");
 
 
 
-$statement=mysqli_query($conn,"SELECT   
+$statement=mysqli_query($conn,"SELECT   site_name AS siteName,
 										site_descr AS description,
 										site_location AS location,
 										picture AS imagePath,

@@ -38,7 +38,7 @@ if ( $key == "update" ){
 
             } else {
 
-                $path = "pets_picture/$id.jpeg";
+                $path = "http://172.20.10.6/2019/TourismTripPortal/pets_picture/$id.jpeg";
                 $finalPath = $path;
 
                 $insert_picture = "UPDATE planned_trip SET picture='$finalPath' WHERE id='$id' ";

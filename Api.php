@@ -22,7 +22,21 @@
 	}
 	
 	//creating a query
-	$stmt = $conn->prepare("SELECT id, name, descr, url, visit_date, picture FROM planned_trip;");
+	$today = date('Y-m-d');
+	$stmt = $conn->prepare("SELECT 
+									planned_trip.id, 
+									touristic_site.site_name, 
+									planned_trip.descr, 
+									planned_trip.url, 
+									planned_trip.visit_date, 
+									planned_trip.picture 
+									FROM
+									 planned_trip
+									 INNER JOIN touristic_site 
+									 ON `touristic_site`.`id` = `planned_trip`.`name` 
+									 WHERE
+									 `planned_trip`.`visit_date` >= '$today' 
+									  ORDER BY `planned_trip`.`visit_date` DESC;");
 	
 	//executing the query 
 	$stmt->execute();

@@ -4,7 +4,18 @@ header("Content-Type: application/json; charset=UTF-8");
 
 require_once 'connect.php';
 
-$query = "SELECT * FROM planned_trip ORDER BY id DESC ";
+
+
+
+$query = "SELECT planned_trip.id,touristic_site.site_name, 
+                                    planned_trip.descr, 
+                                    planned_trip.url, 
+                                    planned_trip.visit_date, 
+                                    planned_trip.picture,planned_trip.likes,planned_trip.status  FROM
+                                     planned_trip
+                                     INNER JOIN touristic_site 
+                                     ON `touristic_site`.`id` = `planned_trip`.`name` 
+                                     ORDER BY planned_trip.id DESC ";
 $result = mysqli_query($conn, $query);
 $response = array();
 
@@ -15,7 +26,7 @@ while( $row = mysqli_fetch_assoc($result) ){
     array_push($response, 
     array(
         'id'        =>$row['id'], 
-        'name'      =>$row['name'], 
+        'name'      =>$row['site_name'], 
         'species'   =>$row['descr'],
         'breed'     =>$row['url'],
         'gender'    =>$row['status'],

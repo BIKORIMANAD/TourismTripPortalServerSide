@@ -12,11 +12,11 @@ if ( $key == "update" ){
 
 
     $id         = $_POST['id'];
-    $name       = $_POST['site_name'];
-    $descr      = $_POST['site_descr'];
-    $url        = $_POST['site_location'];
-    $status     = $_POST['site_type'];
-    $visit_date = $_POST['created_at'];
+    $name       = $_POST['name'];
+    $descr      = $_POST['species'];
+    $url        = $_POST['breed'];
+    $status     = $_POST['gender'];
+    $visit_date = $_POST['birth'];
     $picture    = $_POST['picture'];
 
     $visit_date =  date('Y-m-d', strtotime($visit_date));

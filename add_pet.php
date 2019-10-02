@@ -37,7 +37,7 @@ if ( $key == "insert" ){
             } else {
 
                 $id = mysqli_insert_id($conn);
-                $path = "pets_picture/$id.jpeg";
+                $path = "/pets_picture/$id.jpeg";
                 $finalPath = $path;
 
                 $insert_picture = "UPDATE  planned_trip SET picture='$finalPath' WHERE id='$id' ";

@@ -249,7 +249,7 @@ public function sendEmail($email,$temp_password){
 public function sendPHPMail($email,$temp_password){
 
   $subject = 'Password Reset Request';
-  $message = 'Hi,\n\n Your password reset code is '.$temp_password.' . This code expires in 120 seconds. Enter this code within 120 seconds to reset your password.\n\nThanks,\nLearn2Crack.';
+  $message = 'Hi,\n\n Your password reset code is '.$temp_password.' . This code expires in 120 seconds. Enter this code within 120 seconds to reset your password.\n\nThanks,\nTrip Advisors Trip.';
   $from = "your.email@example.com";
   $headers = "From:" . $from;
 
