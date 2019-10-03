@@ -31,7 +31,7 @@ while( $row = mysqli_fetch_assoc($result) ){
         'breed'     =>$row['url'],
         'gender'    =>$row['status'],
         'birth'     =>date('d M Y', strtotime($row['visit_date'])),
-        'picture'   =>"http://$server_name/2019/TourismTripPortal" . $row['picture'],
+        'picture'   =>"http://$server_name" . $row['picture'],
         'love'      =>$row['likes']) 
     );
 }
