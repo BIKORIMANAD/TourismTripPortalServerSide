@@ -15,7 +15,7 @@ if ( $key == "update_love" ){
 
         if ( mysqli_query($conn, $query) ){
             $result["value"] = "1";
-            $result["message"] = "Love : ".$love;
+            $result["message"] = "Visibility set to : ".$love;
 
             echo json_encode($result);
             mysqli_close($conn);

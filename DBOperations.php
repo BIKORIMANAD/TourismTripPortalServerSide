@@ -15,19 +15,36 @@ public function __construct() {
 }
 
 
- public function insertData($name,$email,$password){
+ public function insertData($name,$cname,$ctin,$caddress,$cphone,$email,$password){
 
  	$unique_id = uniqid('', true);
     $hash = $this->getHash($password);
     $encrypted_password = $hash["encrypted"];
 	$salt = $hash["salt"];
 
- 	$sql = 'INSERT INTO users SET unique_id =:unique_id,name =:name,
-    email =:email,encrypted_password =:encrypted_password,salt =:salt,created_at = NOW()';
+ 	$sql = 'INSERT INTO users SET 
+                                    unique_id =:unique_id,
+                                    name =:name,                                    
+                                    company_ceo =:company_ceo,
+                                    company_tin =:company_tin,
+                                    company_address=:company_address,
+                                    company_phone=:company_phone,
+                                    email =:email,
+                                    encrypted_password =:encrypted_password,
+                                    salt =:salt,
+                                    created_at = NOW()';
 
  	$query = $this ->conn ->prepare($sql);
- 	$query->execute(array('unique_id' => $unique_id, ':name' => $name, ':email' => $email,
-     ':encrypted_password' => $encrypted_password, ':salt' => $salt));
+ 	$query->execute(array(
+        'unique_id' => $unique_id, 
+        ':name' => $name, 
+        ':company_ceo' =>$cname,
+        ':company_tin' =>$ctin,
+        ':company_phone' =>$cphone,
+        ':company_address' =>$caddress,
+        ':email' => $email,
+        ':encrypted_password' => $encrypted_password, 
+        ':salt' => $salt));
 
     if ($query) {
         

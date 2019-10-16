@@ -1,10 +1,5 @@
 <?php 
 
-	/*
-	* Created by Belal Khan
-	* website: www.simplifiedcoding.net 
-	* Retrieve Data From MySQL Database in Android
-	*/
 	
 	//database constants
 	define('DB_HOST', 'localhost');
@@ -23,6 +18,7 @@
 	
 	//creating a query
 	$today = date('Y-m-d');
+	$true = true;
 	$stmt = $conn->prepare("SELECT 
 									planned_trip.id, 
 									touristic_site.site_name, 
@@ -35,8 +31,8 @@
 									 INNER JOIN touristic_site 
 									 ON `touristic_site`.`id` = `planned_trip`.`name` 
 									 WHERE
-									 `planned_trip`.`visit_date` >= '$today' 
-									  ORDER BY `planned_trip`.`visit_date` DESC;");
+									`planned_trip`.`visit_date` >= '$today' 
+									AND name ='{$_GET['siteId']}' AND `planned_trip`.`likes`=true ORDER BY `planned_trip`.`visit_date` DESC;");
 	
 	//executing the query 
 	$stmt->execute();

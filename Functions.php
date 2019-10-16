@@ -18,7 +18,7 @@ public function __construct() {
 }
 
 
-public function registerUser($name, $email, $password) {
+public function registerUser($name,$cname,$ctin,$caddress,$cphone,$email,$password) {
 
 	$db = $this -> db;
 
@@ -27,17 +27,17 @@ public function registerUser($name, $email, $password) {
   		if ($db -> checkUserExist($email)) {
 
   			$response["result"] = "failure";
-  			$response["message"] = "User Already Registered !";
+  			$response["message"] = "Company Already Registered !";
   			return json_encode($response);
 
   		} else {
 
-  			$result = $db -> insertData($name, $email, $password);
+  			$result = $db -> insertData($name,$cname,$ctin,$caddress,$cphone,$email,$password);
 
   			if ($result) {
 
 				  $response["result"] = "success";
-  				$response["message"] = "User Registered Successfully !";
+  				$response["message"] = "Company Registered Successfully !";
   				return json_encode($response);
   						
   			} else {
@@ -250,7 +250,7 @@ public function sendPHPMail($email,$temp_password){
 
   $subject = 'Password Reset Request';
   $message = 'Hi,\n\n Your password reset code is '.$temp_password.' . This code expires in 120 seconds. Enter this code within 120 seconds to reset your password.\n\nThanks,\nTrip Advisors Trip.';
-  $from = "your.email@example.com";
+  $from = "bikorimanadavid.rw@gmail.com";
   $headers = "From:" . $from;
 
   return mail($email,$subject,$message,$headers);
@@ -275,7 +275,7 @@ public function getMsgParamNotEmpty(){
 public function getMsgInvalidParam(){
 
   $response["result"] = "failure";
-  $response["message"] = "Invalid Parameters";
+  $response["message"] = "Invalid Parameterssss";
   return json_encode($response);
 
 }
