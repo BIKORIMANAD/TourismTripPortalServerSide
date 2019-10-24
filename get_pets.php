@@ -14,7 +14,7 @@ $query = "SELECT planned_trip.id,touristic_site.site_name,
                                     planned_trip.picture,planned_trip.likes,planned_trip.status  FROM
                                      planned_trip
                                      INNER JOIN touristic_site 
-                                     ON `touristic_site`.`id` = `planned_trip`.`name` 
+                                     ON `touristic_site`.`id` = `planned_trip`.`name` WHERE planned_trip.company_id = 5
                                      ORDER BY planned_trip.id DESC ";
 $result = mysqli_query($conn, $query);
 $response = array();

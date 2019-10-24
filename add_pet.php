@@ -10,14 +10,15 @@ $url        = $_POST['breed'];
 $status     = $_POST['gender'];
 $visit_date = $_POST['birth'];
 $picture    = $_POST['picture'];
+$company_id = $_POST['companyID'];
 
 if ( $key == "insert" ){
 
     $birth_newformat = date('Y-m-d', strtotime($visit_date));
 
-    $query = "INSERT INTO `planned_trip` (`id`, `name`, `descr`, `url`, `status`, `visit_date`)
+    $query = "INSERT INTO `planned_trip` (`id`, `name`, `descr`, `url`, `status`, `visit_date`,company_id)
                                  VALUES 
-                                         (NULL, '$name', '$descr', '$url', '$status', '$birth_newformat')";
+                                         (NULL, '$name', '$descr', '$url', '$status', '$birth_newformat','$company_id')";
     if ( mysqli_query($conn, $query) ){
 
             if ($picture == null) {

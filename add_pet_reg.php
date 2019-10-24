@@ -7,7 +7,7 @@ $key = $_POST['key'];
 $name       = $_POST['name'];
 $descr      = $_POST['species'];
 $url        = $_POST['breed'];
-$status     = date('Y-m-d');
+$status     = date('Y-m-d H:m');
 $visit_date = $_POST['birth'];
 // $picture    = mysqli_real_escape_string($_POST['picture']);
 

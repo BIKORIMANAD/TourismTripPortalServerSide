@@ -14,21 +14,24 @@ $query = "SELECT booking.booking_id,
                                     booking.address,
                                     booking.status,
                                     booking.created_at  FROM
-                                     booking";
+                                     booking, planned_trip, users WHERE 
+                                     `booking`.`trip_id` = `planned_trip`.`id`
+                                     AND `planned_trip`.`company_id` = `users`.`sno`
+                                      ORDER BY `booking`.`created_at` DESC";
 $result = mysqli_query($conn, $query);
 $response = array();
 
 $server_name = $_SERVER['SERVER_ADDR'];
-
+$today = date('d M Y');
 while( $row = mysqli_fetch_assoc($result) ){
 
     array_push($response, 
     array(
         'id'        =>$row['booking_id'], 
         'name'      =>$row['name'], 
-        'species'   =>$row['email'],
-        'breed'     =>$row['phone'],
-        'birth'     =>date('d M Y', strtotime($row['created_at'])),
+        'species'   =>"E-mail: ".$row['email'] ." - Address: ".$row['address'],
+        'breed'     =>"Phone: ".$row['phone'],
+        'birth'     =>(date('d M Y', strtotime($row['created_at']))==$today)?'today':date('d M Y', strtotime($row['created_at'])) ,
         'picture'   =>$row['email'],
         'love'      =>$row['status']) 
     );

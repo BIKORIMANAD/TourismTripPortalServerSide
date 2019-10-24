@@ -8,7 +8,7 @@ $statement=mysqli_query($conn,"SELECT   site_name AS siteName,
 										site_location AS location,
 										picture AS imagePath,
 										id
-	FROM touristic_site ORDER BY id DESC ");
+	FROM touristic_site WHERE likes = true ORDER BY id DESC ");
 
 
 $rows=array();
